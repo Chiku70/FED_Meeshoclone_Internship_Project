@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; 
+            background-color: #f2f2f2; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0;
+        }
+        .container {
+            background-color: white; 
+            padding: 30px; 
+            border-radius: 15px; 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); 
+            width: 350px;
+            text-align: center;
+        }
+        .container h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .container label {
+            display: block; 
+            margin-bottom: 8px; 
+            text-align: left;
+        }
+        .container input {
+            width: 100%; 
+            padding: 10px; 
+            margin-bottom: 15px; 
+            border: 1px solid #ccc; 
+            border-radius: 5px; 
+            font-size: 16px;
+        }
+        .container button {
+            width: 100%; 
+            padding: 12px; 
+            background-color: #4CAF50; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            font-size: 18px; 
+            transition: background-color 0.3s ease;
+        }
+        .container button:hover {
+            background-color: #45a049;
+        }
+        .container .extra-buttons {
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .container .extra-buttons button {
+            flex: 1;
+            margin: 0 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        .container .buy-button {
+            background-color: green;
+        }
+        .container .buy-button:hover {
+            background-color: darkgreen;
+        }
+        .container .cart-button {
+            background-color: blue;
+        }
+        .container .cart-button:hover {
+            background-color: darkblue;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Signup</h2>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+            
+            <button type="submit" ><a href="index.html">Sign Up</a></button>
+        </form>
+        <div class="extra-buttons">
+            
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beauty and Health Products</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+            padding: 20px;
+            max-width: 1200px;
+        }
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+        .card img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        .card h3 {
+            margin: 16px 0 8px 0;
+        }
+        .card p {
+            margin: 8px 0;
+            color: #555;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+        .headerLeft, .headerRight {
+            display: flex;
+            align-items: center;
+        }
+        .headerLeft img {
+            height: 40px;
+        }
+        .headerRight > div {
+            margin-right: 20px;
+        }
+        .headerRight p, .headerRight button {
+            margin: 0;
+            cursor: pointer;
+        }
+        .downloadContainer {
+            position: relative;
+        }
+        .downloadHoverBtnContainer {
+            position: absolute;
+            top: 40px;
+            left: 0;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        .downloadContainer:hover .downloadHoverBtnContainer {
+            display: block;
+        }
+        .downloadBtn img {
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="header">
+        <div class="headerLeft">
+            <div class="logoContainer">
+                <img src="./img/meesho.png" alt="Meesho Logo">
+            </div>
+        </div>
+       
+    </header>
+
+    <div class="card-container" id="product-cards"></div>
+
+    <script>
+        const beautyHealthProducts = {
+            products: [
+                {
+                    name: "Organic Face Cream",
+                    imageSrc: "https://www.jiomart.com/images/product/original/1002338/organic-harvest-kumkumadi-cream-50-gm-prod-1002338-0-202202210844.jpg?im=Resize=(600,600)",
+                    price: 29.99
+                },
+                {
+                    name: "Herbal Shampoo",
+                    imageSrc: "https://svashudhi.com/cdn/shop/files/Herbalhairshampoo10801080_1800x1800.png?v=1690893102",
+                    price: 15.99
+                },
+                {
+                    name: "Aloe Vera Gel",
+                    imageSrc: "https://m.media-amazon.com/images/I/41GegaKkCLL._SY879_.jpg",
+                    price: 12.99
+                },
+                {
+                    name: "Vitamin C Serum",
+                    imageSrc: "https://www.garnier.in/-/media/project/loreal/brand-sites/garnier/apac/in/products/light-complete/vitamin-c-face-serum/vitamin-c-face-serum-30ml/8994993011421-01.jpg?w=500&rev=06db75db205d4c988281a2e6b3a74bda&hash=63B7262D512C856A49118D31DC2C05E7",
+                    price: 24.99
+                },
+                {
+                    name: "Natural Lip Balm",
+                    imageSrc: "https://m.media-amazon.com/images/I/51quIrKIMgL._SX679_.jpg",
+                    price: 5.99
+                }
+            ]
+        };
+
+        const displayProductCards = (products) => {
+            const productCardsContainer = document.getElementById('product-cards');
+
+            products.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'card';
+
+                card.innerHTML = `
+                    <img src="${product.imageSrc}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    <p>Price: $${product.price.toFixed(2)}</p>
+                    <button style="background-color: green; color: white; padding: 10px 20px; border: none; border-radius: 5px;">Buy</button>
+<button style="background-color: blue; color: white; padding: 10px 20px; border: none; border-radius: 5px;">Add To Cart</button>
+
+                `;
+
+                productCardsContainer.appendChild(card);
+            });
+        };
+
+        displayProductCards(beautyHealthProducts.products);
+    </script>
+</body>
+</html>

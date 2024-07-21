@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home & Kitchen Products</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+            padding: 20px;
+            max-width: 1200px;
+        }
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+        .card img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        .card h3 {
+            margin: 16px 0 8px 0;
+        }
+        .card p {
+            margin: 8px 0;
+            color: #555;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+        .headerLeft, .headerRight {
+            display: flex;
+            align-items: center;
+        }
+        .headerLeft img {
+            height: 40px;
+        }
+        .headerRight > div {
+            margin-right: 20px;
+        }
+        .headerRight p, .headerRight button {
+            margin: 0;
+            cursor: pointer;
+        }
+        .downloadContainer {
+            position: relative;
+        }
+        .downloadHoverBtnContainer {
+            position: absolute;
+            top: 40px;
+            left: 0;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        .downloadContainer:hover .downloadHoverBtnContainer {
+            display: block;
+        }
+        .downloadBtn img {
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="header">
+        <div class="headerLeft">
+            <div class="logoContainer">
+                <img src="./img/meesho.png" alt="Meesho Logo">
+            </div>
+        </div>
+        
+    </header>
+
+    <div class="card-container" id="product-cards"></div>
+
+    <script>
+        const homeKitchenProducts = {
+            products: [
+                {
+                    name: "Non-Stick Cookware Set",
+                    imageSrc: "https://images-cdn.ubuy.co.in/64c839497495b638947c8fce-tramontina-9-piece-non-stick-cookware.jpg",
+                    price: 149.99
+                },
+                {
+                    name: "Kitchen Knife Set",
+                    imageSrc: "https://vinodcookware.com/cdn/shop/products/2_1_80076d85-8eae-43f1-a24c-aea106b55973.jpg?v=1645848884",
+                    price: 39.99
+                },
+                {
+                    name: "Coffee Maker Machine",
+                    imageSrc: "https://glenindia.com/cdn/shop/products/1_59f04f79-cb58-4b08-9547-07702fcc49a1_1200x1200.jpg?v=1672308229",
+                    price: 89.99
+                },
+                {
+                    name: "Stainless Steel Mixing Bowls",
+                    imageSrc: "https://m.media-amazon.com/images/I/61HhSfq5pLL._SX679_PIbundle-3,TopRight,0,0_SX679SY772SH20_.jpg",
+                    price: 29.99
+                },
+                {
+                    name: "Bedding Set",
+                    imageSrc: "https://m.media-amazon.com/images/I/51gYpxS9PzL._SX300_SY300_QL70_FMwebp_.jpg",
+                    price: 99.99
+                },
+                {
+                    name: "Vacuum Cleaner",
+                    imageSrc: "https://m.media-amazon.com/images/I/51gYpxS9PzL._SX300_SY300_QL70_FMwebp_.jpg",
+                    price: 199.99
+                },
+                {
+                    name: "LED Desk Lamp",
+                    imageSrc: "https://m.media-amazon.com/images/I/41VpmC+09FL._AC._SR180,230.jpg",
+                    price: 49.99
+                },
+                {
+                    name: "Dining Table Set",
+                    imageSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuDXFe8KgwPeEnQXDr0XSoTJGxcu07_YoTyw&s",
+                    price: 399.99
+                },
+                {
+                    name: "Water Purifier",
+                    imageSrc: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSy-HiF9-zHew6tPi6oyT_EngDDkH-1-ywTQb89wyp28Fcdma6gA54tG3Ax4tZI2O-7K-_WsGxzXsofoupJ-QDDEhpbUWXd3jhFa3kc-gi0s5t7EBjwmTl4zA",
+                    price: 299.99
+                },
+                {
+                    name: "Toaster Oven",
+                    imageSrc: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRIldXj7m1nb-6QFsfYjHgMzFRGY6eZ8CDr_7u06vssLGZlF5PIhP0Lug8aeuxQqmq4R5Psxh049FettrFrjjay8UN5LyJzuaNDTRohyRqUANEYEM6QycjViQ",
+                    price: 79.99
+                },
+                {
+                    name: "Cooking Utensil Set",
+                    imageSrc: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRfNYgfVKQjOMtvHQODy8WvMI_oZim7DXg7cqhnydurFcAQWCgpXyeU8nOAtaXXgRDnnNfKntP1c9umR5ioSxLEP1ocoif0qiIEthx6Kyo87_SLkTUlbDsT",
+                    price: 24.99
+                },
+                {
+                    name: "Air Fryer",
+                    imageSrc: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSVwcReaA1hON67FCQNSt_9LuY2Uf2OtQWFi_xOjbFaNy2KpEFe54D52Yy98AJRyUnh8QvhUY5CNZEvsXnw7O-PN38gyTQn5kcThJTyYV1HophAInUGsy0CYg",
+                    price: 129.99
+                }
+            ]
+        };
+
+        const displayProductCards = (products) => {
+            const productCardsContainer = document.getElementById('product-cards');
+
+            products.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'card';
+
+                card.innerHTML = `
+                    <img src="${product.imageSrc}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    <p>Price: $${product.price.toFixed(2)}</p>
+                    <button style="background-color: green; color: white; padding: 10px 20px; border: none; border-radius: 5px;">Buy</button>
+<button style="background-color: blue; color: white; padding: 10px 20px; border: none; border-radius: 5px;">Add To Cart</button>
+
+                `;
+
+                productCardsContainer.appendChild(card);
+            });
+        };
+
+        displayProductCards(homeKitchenProducts.products);
+    </script>
+</body>
+</html>
